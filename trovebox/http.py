@@ -215,7 +215,7 @@ class Http(object):
                     if isinstance(item, TroveboxObject):
                         new_list[i] = item.id
                 # Convert list to string
-                value = ','.join([str(item) for item in new_list])
+                value = u','.join([item for item in new_list])
 
             # Handle booleans
             if isinstance(value, bool):

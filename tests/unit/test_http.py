@@ -148,13 +148,13 @@ class TestHttp(unittest.TestCase):
         """Check that the post method accepts parameters correctly"""
         self._register_uri(httpretty.POST)
         response = self.client.post(self.test_endpoint,
-                                   foo="bar", spam="eggs")
-        self.assertIn(b"spam=eggs", self._last_request().body)
-        self.assertIn(b"foo=bar", self._last_request().body)
+                                   foo="bar", spam=u"eggs")
+        self.assertIn(u"spam=eggs", self._last_request().body)
+        self.assertIn(u"foo=bar", self._last_request().body)
         self.assertEqual(response, self.test_data)
         self.assertEqual(self.client.last_url, self.test_uri)
         self.assertEqual(self.client.last_params, {"foo": b"bar",
-                                                   "spam": b"eggs"})
+                                                   "spam": u"eggs"})
         self.assertEqual(self.client.last_response.json(), self.test_data)
 
     @httpretty.activate
